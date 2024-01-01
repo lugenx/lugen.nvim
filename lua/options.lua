@@ -28,9 +28,16 @@ vim.wo.number = true
 
 -- No line numbers in Neovim terminal
 vim.api.nvim_create_autocmd("TermOpen", {
-    pattern = "*",
-    command = "setlocal nonumber norelativenumber"
+  pattern = "*",
+  command = "setlocal nonumber norelativenumber"
 })
+
+-- Tab size
+vim.opt.tabstop = 4
+
+vim.opt.shiftwidth = 4
+
+vim.opt.expandtab = true
 --------------------------------------------------
 -- Enable mouse mode
 vim.o.mouse = 'a'

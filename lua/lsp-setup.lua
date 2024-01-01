@@ -79,9 +79,14 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
+  tsserver = {},
+  html = { filetypes = { 'html', 'twig', 'hbs' } },
+  cssls = {},
+  jsonls = {},
+  eslint = {},
+  stylelint_lsp = {},
+  svelte = {},
+  marksman = {}, -- for markdown
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
