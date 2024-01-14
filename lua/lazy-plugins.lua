@@ -132,6 +132,13 @@ require('lazy').setup({
       require('onedark').load()
     end,
   },
+  --  [[Harpoon]]
+  {
+    'ThePrimeagen/harpoon', -- Harpoon plugin repository
+    config = function()
+      -- Any specific configuration for Harpoon can go here
+    end
+  },
 
   {
     -- Set lualine as statusline
