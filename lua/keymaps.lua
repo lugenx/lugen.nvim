@@ -16,17 +16,30 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- [[Harpoon]]
 -- Marking the current file
-vim.api.nvim_set_keymap('n', '<leader>mm', ":lua require('harpoon.mark').add_file()<CR>",
+vim.api.nvim_set_keymap('n', '<leader>hm', ":lua require('harpoon.mark').add_file()<CR>",
   { noremap = true, silent = true })
 
 -- Navigating to marked files
-vim.api.nvim_set_keymap('n', '<leader>1', ":lua require('harpoon.ui').nav_file(1)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>2', ":lua require('harpoon.ui').nav_file(2)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>3', ":lua require('harpoon.ui').nav_file(3)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>4', ":lua require('harpoon.ui').nav_file(4)<CR>", { noremap = true, silent = true })
-
+vim.api.nvim_set_keymap('n', '<leader>h1', ":lua require('harpoon.ui').nav_file(1)<CR>",
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>h2', ":lua require('harpoon.ui').nav_file(2)<CR>",
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>h3', ":lua require('harpoon.ui').nav_file(3)<CR>",
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>h4', ":lua require('harpoon.ui').nav_file(4)<CR>",
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>h5', ":lua require('harpoon.ui').nav_file(5)<CR>",
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>h6', ":lua require('harpoon.ui').nav_file(6)<CR>",
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>h7', ":lua require('harpoon.ui').nav_file(7)<CR>",
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>h8', ":lua require('harpoon.ui').nav_file(8)<CR>",
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>h9', ":lua require('harpoon.ui').nav_file(9)<CR>",
+  { noremap = true, silent = true })
 -- Toggling the Harpoon menu
-vim.api.nvim_set_keymap('n', '<leader>ml', ":lua require('harpoon.ui').toggle_quick_menu()<CR>",
+vim.api.nvim_set_keymap('n', '<leader>hl', ":lua require('harpoon.ui').toggle_quick_menu()<CR>",
   { noremap = true, silent = true })
 
 -- [[ Highlight on yank ]]
