@@ -49,7 +49,7 @@ require('which-key').register {
   ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
   ['<leader>g'] = {
     name = '[G]it',
-    h = { name = '[G]it [H]unk ', ['...'] = 'Defined in lazy-plugins' },
+    h = { name = '[G]it [H]unk ', _ = 'which_key_ignore' },
   },
   ['<leader>h'] = { name = '[H]arpoon',
     m = "Mark File",
@@ -111,6 +111,7 @@ local servers = {
       -- diagnostics = { disable = { 'missing-fields' } },
     },
   },
+  jdtls = {}, -- for java
 }
 
 -- Setup neovim lua configuration
