@@ -30,6 +30,10 @@ require('lazy').setup({
   {
     'mbbill/undotree',
     cmd = "UndotreeToggle",
+    config = function()
+      -- Set the window layout style to 2 (diff left to right, undotree at the bottom)
+      vim.g.undotree_WindowLayout = 2
+    end,
   },
   {
     -- Autocompletion

@@ -53,4 +53,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- Key binding to toggle Undotree
+vim.api.nvim_set_keymap('n', '<leader>u', ':UndotreeToggle<CR>', { noremap = true, silent = true })
+
 -- vim: ts=2 sts=2 sw=2 et
