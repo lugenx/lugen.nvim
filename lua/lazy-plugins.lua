@@ -26,7 +26,11 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
-
+  -- Undo tree visualization plugin
+  {
+    'mbbill/undotree',
+    cmd = "UndotreeToggle",
+  },
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
