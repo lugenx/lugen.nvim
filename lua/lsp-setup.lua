@@ -11,6 +11,7 @@ local on_attach = function(_, bufnr)
   nmap('<leader>rn', vim.lsp.buf.rename, 'Rename')
   nmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
   nmap('gd', require('telescope.builtin').lsp_definitions, 'Goto Definition')
+  nmap('gr', require('telescope.builtin').lsp_references, 'Goto Reference')
   -- ... other LSP mappings ..
 
   -- Create a command `:Format` local to the LSP buffer
