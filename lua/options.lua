@@ -38,7 +38,10 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
 vim.opt.expandtab = true
---------------------------------------------------
+
+-- always 8 line padding on top and bottom
+vim.opt.scrolloff = 8
+
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
