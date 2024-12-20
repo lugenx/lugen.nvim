@@ -278,6 +278,13 @@ require('lazy').setup({
       })
     end
   },
+  -- hardtime
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    opts = {}
+  },
+
   -- Autoformat
   {
     'neovim/nvim-lspconfig',
