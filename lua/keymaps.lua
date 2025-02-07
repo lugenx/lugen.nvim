@@ -5,8 +5,8 @@
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Don't move half screen when i do ctrl+d and ctrl+u, thats too much, just move 10 lines
-vim.keymap.set("n", "<C-d>", "10jzz", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-u>", "10kzz", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<C-d>", "10jzz", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<C-u>", "10kzz", { noremap = true, silent = true })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
