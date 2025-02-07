@@ -25,6 +25,8 @@ vim.o.hlsearch = false
 -- Make line numbers default
 vim.wo.number = true
 
+-- Disable to respect terminals blinking settings
+vim.opt.guicursor = ""
 
 -- No line numbers in Neovim terminal
 vim.api.nvim_create_autocmd("TermOpen", {
