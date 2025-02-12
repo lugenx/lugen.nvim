@@ -4,6 +4,13 @@ vim.wo.numberwidth = 4
 --  Always open Netrw with Tree style
 vim.g.netrw_liststyle = 3
 
+-- Hide netrwTreeListing file and .git directory from Netrw
+vim.g.netrw_list_hide = [[netrwTreeListing$,^\.git/$]]
+vim.opt.wildignore:append({ "netrwTreeListing", ".git" })
+
+-- sort directories first then files alphabetically
+vim.g.netrw_sort_sequence = "[\\/],*"
+
 --  Set the shell option - neovim can read .bash_profile file
 vim.opt.shell = "/bin/bash -l"
 
