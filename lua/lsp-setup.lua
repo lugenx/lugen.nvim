@@ -20,46 +20,6 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
--- Register group names with which-key
--- Register mappings with which-key using the new specification
-require('which-key').add({
-  { '<leader>c',   group = 'Code' },
-  { '<leader>c_',  hidden = true },
-  { '<leader>d',   group = 'Document' },
-  { '<leader>d_',  hidden = true },
-  { '<leader>g',   group = 'Git' },
-  { '<leader>gh',  group = 'Git Hunk' },
-  { '<leader>gh_', hidden = true },
-  { '<leader>h',   group = 'Harpoon' },
-  { '<leader>h1',  desc = 'Nav to File 1' },
-  { '<leader>h2',  desc = 'Nav to File 2' },
-  { '<leader>h3',  desc = 'Nav to File 3' },
-  { '<leader>h4',  desc = 'Nav to File 4' },
-  { '<leader>h5',  desc = 'Nav to File 5' },
-  { '<leader>h6',  desc = 'Nav to File 6' },
-  { '<leader>h7',  desc = 'Nav to File 7' },
-  { '<leader>h8',  desc = 'Nav to File 8' },
-  { '<leader>h9',  desc = 'Nav to File 9' },
-  { '<leader>hl',  desc = 'List Files' },
-  { '<leader>hm',  desc = 'Mark File' },
-  { '<leader>p',   desc = 'Prettier' },
-  { '<leader>r',   group = 'Rename' },
-  { '<leader>r_',  hidden = true },
-  { '<leader>s',   group = 'Search' },
-  { '<leader>s_',  hidden = true },
-  { '<leader>t',   group = 'Toggle' },
-  { '<leader>t_',  hidden = true },
-  { '<leader>u',   ':UndotreeToggle<CR>', desc = 'Toggle Undo Tree' },
-  { '<leader>w',   group = 'Workspace' },
-  { '<leader>w_',  hidden = true },
-})
-
--- Visual mode mappings using the new specification
-require('which-key').add({
-  { '<leader>',   group = 'VISUAL <leader>', mode = 'v' },
-  { '<leader>gh', desc = 'Git Hunk',         mode = 'v' },
-})
-
 -- Rest of your LSP and mason configurations
 -- ... (no changes needed here) ...
 

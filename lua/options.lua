@@ -1,15 +1,3 @@
--- [[ Setting options ]]
--- See `:help vim.o`
--- NOTE: You can change these options as you wish!
-
--- Custom directory navigation commands
-vim.api.nvim_create_user_command('Cont', 'cd $HOME/code/contributions', {})
-vim.api.nvim_create_user_command('Gist', 'cd $HOME/code/gists', {})
-vim.api.nvim_create_user_command('Proj', 'cd $HOME/code/projects', {})
-vim.api.nvim_create_user_command('Temp', 'cd $HOME/code/temp', {})
-vim.api.nvim_create_user_command('Trai', 'cd $HOME/code/training', {})
-
-
 --  Increase distance between line numbers and edge
 vim.wo.numberwidth = 4
 
@@ -49,7 +37,6 @@ vim.o.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
 
 -- Enable break indent
