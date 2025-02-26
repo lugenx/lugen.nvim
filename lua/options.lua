@@ -11,6 +11,45 @@ vim.opt.wildignore:append({ "netrwTreeListing", ".git" })
 -- sort directories first then files alphabetically
 vim.g.netrw_sort_sequence = "[\\/],*"
 
+-- This code fixes "the ctrl ^ opens emtpy buffer when last buffer is netrw" issue. Will keep it like this untill I find better solution.
+vim.keymap.set("n", "<C-^>", function()
+  local alt_buf = vim.fn.bufnr("#")
+  if alt_buf > 0
+      and vim.api.nvim_buf_is_valid(alt_buf)
+      and vim.api.nvim_buf_is_loaded(alt_buf)
+  then
+    local ft = vim.api.nvim_buf_get_option(alt_buf, "filetype")
+    local name = vim.api.nvim_buf_get_name(alt_buf)
+    if ft ~= "netrw" and not name:match("netrwTreeListing") then
+      vim.cmd("buffer #")
+      return
+    end
+  end
+
+  -- Fallback: sort buffers by recency (ignoring netrw)
+  local current = vim.api.nvim_get_current_buf()
+  local bufs = vim.fn.getbufinfo({ buflisted = 1 })
+  local candidates = {}
+  for _, buf in ipairs(bufs) do
+    local ft = vim.api.nvim_buf_get_option(buf.bufnr, "filetype")
+    local name = vim.api.nvim_buf_get_name(buf.bufnr)
+    if buf.bufnr ~= current and ft ~= "netrw" and not name:match("netrwTreeListing") then
+      table.insert(candidates, buf)
+    end
+  end
+
+  if #candidates == 0 then
+    print("No alternate code buffer available")
+    return
+  end
+
+  table.sort(candidates, function(a, b)
+    return a.lastused > b.lastused
+  end)
+  vim.cmd("buffer " .. candidates[1].bufnr)
+end, { noremap = true, silent = true })
+----
+
 --  Set the shell option - neovim can read .bash_profile file
 vim.opt.shell = "/bin/bash -l"
 

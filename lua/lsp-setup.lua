@@ -53,6 +53,7 @@ local servers = {
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   cssls = {},
   jsonls = {},
+  sqlls = {},
   eslint = {},
   stylelint_lsp = {},
   svelte = {},
