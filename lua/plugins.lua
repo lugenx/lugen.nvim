@@ -21,6 +21,9 @@ require('lazy').setup({
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
     },
+ config = function()
+      require('lsp-setup')
+    end,
   },
   -- Undo tree visualization plugin
   {
@@ -272,93 +275,6 @@ require('lazy').setup({
     dependencies = { "MunifTanjim/nui.nvim" },
     opts = {}
   },
-
-  -- Autoformat
-  {
-    'neovim/nvim-lspconfig',
-    config = function()
-      -- Switch for controlling whether you want autoformatting.
-      --  Use :KickstartFormatToggle to toggle autoformatting on or off
-      local format_is_enabled = true
-      vim.api.nvim_create_user_command('KickstartFormatToggle', function()
-        format_is_enabled = not format_is_enabled
-        print('Setting autoformatting to: ' .. tostring(format_is_enabled))
-      end, {})
-
-      -- Create an augroup that is used for managing our formatting autocmds.
-      --      We need one augroup per client to make sure that multiple clients
-      --      can attach to the same buffer without interfering with each other.
-      local _augroups = {}
-      local get_augroup = function(client)
-        if not _augroups[client.id] then
-          local group_name = 'kickstart-lsp-format-' .. client.name
-          local id = vim.api.nvim_create_augroup(group_name, { clear = true })
-          _augroups[client.id] = id
-        end
-
-        return _augroups[client.id]
-      end
-
-      -- Whenever an LSP attaches to a buffer, we will run this function.
-      --
-      -- See `:help LspAttach` for more information about this autocmd event.
-      vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('kickstart-lsp-attach-format', { clear = true }),
-        -- This is where we attach the autoformatting for reasonable clients
-        callback = function(args)
-          local client_id = args.data.client_id
-          local client = vim.lsp.get_client_by_id(client_id)
-          local bufnr = args.buf
-
-          -- Only attach to clients that support document formatting
-          if not client.server_capabilities.documentFormattingProvider then
-            return
-          end
-
-          -- To apply prettier install aplicable lsp (with Mason, "ensure installed"), then comment out the lsp below to make it work
-          local prettier_supported_lsps = {
-            "tsserver",      -- TypeScript and JavaScript
-            "cssls",         -- CSS
-            "html",          -- HTML
-            "jsonls",        -- JSON
-            "eslint",        -- JavaScript and TypeScript (linting)
-            "stylelint_lsp", -- CSS, SCSS, and other stylesheets (linting)
-            --  "vuels",                    -- Vue.js
-            "svelte",        -- Svelte
-            -- "graphql",                  -- GraphQL
-            --"yaml-language-server",     -- YAML
-            "marksman", -- Markdown
-            -- Add other LSP client names as needed
-          }
-
-          if vim.tbl_contains(prettier_supported_lsps, client.name) then
-            vim.api.nvim_create_autocmd('BufWritePre', {
-              buffer = bufnr,
-              command = "Prettier",
-            })
-          end
-
-          -- Create an autocmd that will run *before* we save the buffer.
-          --  Run the formatting command for the LSP that has just attached.
-          vim.api.nvim_create_autocmd('BufWritePre', {
-            group = get_augroup(client),
-            buffer = bufnr,
-            callback = function()
-              if not format_is_enabled then
-                return
-              end
-
-              vim.lsp.buf.format {
-                async = false,
-                filter = function(c)
-                  return c.id == client.id
-                end,
-              }
-            end,
-          })
-        end,
-      })
-    end,
-  } }, {})
+})
 
 -- vim: ts=2 sts=2 sw=2 et
