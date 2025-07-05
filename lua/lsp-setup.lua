@@ -91,4 +91,20 @@ for server_name, config in pairs(servers) do
     filetypes = (config or {}).filetypes,
   }
 end
+
+-- Format on save for LSP servers that support it
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local bufnr = args.buf
+    if client and client.server_capabilities.documentFormattingProvider then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format { async = false }
+        end,
+      })
+    end
+  end,
+})
 -- vim: ts=2 sts=2 sw=2 et
